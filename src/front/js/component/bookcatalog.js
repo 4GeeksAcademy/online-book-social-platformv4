@@ -1,23 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import "../../styles/bookcatalog.css";
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Card from "./catalog-cards.js";
+import Card from "./trending-catalog-cards.js";
 import CardGroup from "./bookcatalogcargroup.js";
 import axios from "axios";
 
-
 export const BookCatalog = () => {
-  const [search, setSearch]=useState("");
-  const [bookData, setData]=useState([]);
-  const searchBook = (evt) => {
-    if (evt.key === "Enter") {
+  const [search, setSearch] = useState("");
+  const [bookData, setData] = useState([]);
+
+  const searchBook = () => {
+    if (search.trim() !== "") {
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyDE-JV38ESCgNT7Prio8JsZ1S6tGK40qWo`)
-      .then(res=>setData(res.data.items))
-      .catch(err=>console.log(err))
+        .then(res => setData(res.data.items))
+        .catch(err => console.log(err));
     }
   };
+
+  const handleSearchClick = () => {
+    searchBook();
+  };
+
+  const handleKeyPress = (evt) => {
+    if (evt.key === "Enter") {
+      searchBook();
+    }
+  };
+
   return (
     <div className="book-catalog-container">
       <Carousel>
@@ -45,9 +56,16 @@ export const BookCatalog = () => {
       <div className="search-wrapper">
         <h2 className="heading">Discover Your Next Book</h2>
         <div className="search">
-          <input type="text" placeholder="Enter Book Name" value={search} onChange={e => setSearch(e.target.value)}
-            onKeyPress={searchBook} />
-          <button><FontAwesomeIcon icon={faSearch} /></button>
+          <input
+            type="text"
+            placeholder="Enter Book Name"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            onKeyPress={handleKeyPress}
+          />
+          <button onClick={handleSearchClick}>
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
         </div>
       </div>
       <div className="card-container">
