@@ -8,6 +8,11 @@ class Users(db.Model):
     name = db.Column(db.String(250), unique=False, nullable=False)
     email = db.Column(db.String(250), unique=True, nullable=False)
     password = db.Column(db.String(250), unique=False, nullable=False)
+    profession = db.Column(db.String(250), unique=False, nullable=True)
+    bio = db.Column(db.String(500), unique=False, nullable=True)
+    twitter_username = db.Column(db.String(250), unique=False, nullable=True)
+    ig_username = db.Column(db.String(250), unique=False, nullable=True)
+    favorite_book = db.Column(db.String(250), unique=False, nullable=False)
     #discussions = db.relationship("Discussions", backref="created_by")
 
     def __repr__(self):
@@ -18,6 +23,11 @@ class Users(db.Model):
             "id": self.id,
             "name": self.name, 
             "email": self.email,
+            "profession": self.profession,
+            "bio": self.bio,
+            "twitter_username": self.twitter_username,
+            "ig_username": self.ig_username,
+            "favorite_book": self.favorite_book,
             # do not serialize the password, its a security breach
         }
     
@@ -38,3 +48,4 @@ class Discussions(db.Model):
             "discussion": self.discussion,
             # do not serialize the password, its a security breach
         }
+    

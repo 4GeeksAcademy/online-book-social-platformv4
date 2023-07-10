@@ -81,14 +81,18 @@ h5.card-title {
 
 .card {
   width: 350px;
-  background-color: #efefef;
+  background-color: #796d62;
   border: none;
   cursor: pointer;
   transition: all 0.5s;
+  color: #dbd3ca; 
+  
 }
 
 .image img {
-  transition: all 0.5s
+  transition: all 0.5s; 
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .card:hover .image img {
@@ -99,6 +103,12 @@ h5.card-title {
   height: 140px;
   width: 140px;
   border-radius: 50%
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: black;
+  border-color: #796d62;
 }
 
 .name {
@@ -137,7 +147,7 @@ h5.card-title {
 
 .text span {
   font-size: 13px;
-  color: #545454;
+  color: #dbd3ca;
   font-weight: 500
 }
 
@@ -151,10 +161,11 @@ hr .new1 {
 
 .join {
   font-size: 14px;
-  color: #a0a0a0;
+  color: black;
   font-weight: bold
 }
 
 .date {
   background-color: #ccc
 }
+

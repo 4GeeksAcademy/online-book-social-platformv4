@@ -2,13 +2,11 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import "../../styles/myprofile.css";
 
-
 export const MyProfile = () => {
   return (
     <div className="container">
-     
-        {/* <div> */}
-          {/* <p class="center">
+      {/* <div> */}
+      {/* <p class="center">
             <em>Hi, Im Laura M.</em>
           </p>
           <img
@@ -19,83 +17,78 @@ export const MyProfile = () => {
             alt="..."
           />
           <p class="alltime-fave">My All Time Favorite Book is....</p> */}
-          <div class="row">
-            <div class="col-6">
-          <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
-          <div class="card p-4"> 
-          <div class=" image d-flex flex-column justify-content-center align-items-center"> 
-          <button class="btn btn-secondary"> 
-          <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> 
-          <span class="name mt-3">Eleanor Pena</span> 
-          <span class="idd">@eleanorpena</span> 
-          <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
-           <span><i class="fa-solid fa-location-dot"></i></span> 
-           </div> 
-           <div class="d-flex flex-row justify-content-center align-items-center mt-3"> 
-           <span class="number">1069 <span class="follow">Followers</span></span> </div> 
-           <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> 
-           </div> 
-           <div class="text mt-3"> 
-           <span>Eleanor Pena <br></br> Artist/ Creative Director by Day #NFT minting@ with FND night.
-           <br></br>I've read over <em>number of books</em> books.
-           </span> 
-          
-           </div> 
-           <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
-           <span><i class="fa-brands fa-square-twitter"></i></span>
-           <span><i class="fa-sharp fa-light fa-face-smile"></i></span> 
-           <span><i class="fa fa-instagram"></i></span> 
-           <span><i class="fa fa-linkedin"></i></span> 
-           </div> 
-           <div class=" px-2 rounded mt-4 date "> 
-           <span class="join">Joined May,2021</span> 
-           </div> 
-           </div>
-            </div>
-            
-</div>
-</div>
-</div>
-          <div class="row">
-          <div class="col-6">
-          <div
-            className="card mb-3"
-            style={{ maxWidth: "540px" }}
-            class="fave-alltime"
-          >
-            <div className="row g-0">
-              <div className="col-md-4">
-                <img
-                  src="https://m.media-amazon.com/images/I/61f51awj6ML._AC_UF1000,1000_QL80_.jpg"
-                  className="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title" placeholder="My Favorite Book is">
-                    Richest Man in Babylon
-                  </h5>
-                  <p className="card-text">
-                    A strong lesson from this book is that no matter how small
-                    your income is, 10% of it is yours to keep. Grow your purse
-                    to fattening. This book is highly practical and the lessons
-                    in them are capable of growing anyone's purse if applied. In
-                    all, it's a great book. You should find out for yourself.
-                  </p>
-                  <p className="card-text">
-                    <small className="text-body-secondary">
-                      Last updated 1 month ago...
-                    </small>
-                  </p>
+      <div class="row">
+        <div class="col-6">
+          <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+            <div class="card p-4">
+              <div class=" image d-flex flex-column justify-content-center align-items-center">
+                <button class="btn btn-secondary">
+                  <img
+                    src="https://www.publicdomainpictures.net/pictures/240000/nahled/woman-holding-book.jpg"
+                    height="100"
+                    width="100"
+                  />
+                </button>
+                <span class="name mt-3">Eleanor Pena</span>
+                <span class="idd">@eleanorpena</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                  <span>
+                    <i class="fa-solid fa-location-dot"></i>
+                  </span>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+                  <span class="number">
+                    55<span class="follow">Books</span>
+                  </span>{" "}
+                </div>
+                <div class=" d-flex mt-2">
+                  {" "}
+                  <button class="btn1 btn-dark">Edit Profile</button>
+                </div>
+                <div class="text mt-3">
+                  <span>
+                    Eleanor Pena <br></br> Artist/ Creative Director by Day #NFT
+                    minting@ with FND night.
+                    <br></br>I've read over <em>number of books</em> books.
+                  </span>
+                </div>
+                <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+                  <span>
+                    <i class="fa-brands fa-square-twitter"></i>
+                  </span>
+                  <span>
+                    <i class="fa-sharp fa-light fa-face-smile"></i>
+                  </span>
+                  <span>
+                    <i class="fa fa-instagram"></i>
+                  </span>
+                  <span>
+                    <i class="fa fa-linkedin"></i>
+                  </span>
+                </div>
+                <div class=" px-2 rounded mt-4 date ">
+                  <span class="join">Joined May,2021</span>
                 </div>
               </div>
             </div>
           </div>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-6">
+      <div class="card p-4" >
+        <h5 class="card-header">My Favorite Book is..</h5>
+        <div class="card-body">
+          <h5 class="card-title">Book Title</h5>
+          <span class="card-text">
+            -Author
+          </span>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
           <p class="fave-genres">
             These are my favorite book genres and favorite book to match...
           </p>
@@ -132,60 +125,57 @@ export const MyProfile = () => {
               Biography
             </a>
           </div>
+        </div>
+      </div>
+      <p class="book-collection row">
+        These are a few books that are a part of my collection...
+      </p>
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel-slide column"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1559563270i/16256798.jpg"
+              height="500"
+              class="image-class"
+              alt="..."
+            />
           </div>
+          <div class="carousel-item">
+            <img
+              src="https://books.google.com/books/content?id=sQYqRCIhFAMC&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1fNlZ6KPWOf0nRv3eTLr29-HZ5bw&w=1280"
+              height="500"
+              class="image-class"
+              alt="..."
+            />
           </div>
-          <p class="book-collection row">
-            These are a few books that are a part of my collection...
-          </p>
-          <div
-            id="carouselExampleSlidesOnly"
-            class="carousel-slide column"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1559563270i/16256798.jpg"
-                  height="500"
-                  class="image-class"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://books.google.com/books/content?id=sQYqRCIhFAMC&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1fNlZ6KPWOf0nRv3eTLr29-HZ5bw&w=1280"
-                  height="500"
-                  class="image-class"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://books.google.com/books/publisher/content?id=EHiLDQAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1FwdKzUlJEm31ppz-huBNucs4JHQ&w=1280"
-                  height="500"
-                  class="image-class"
-                  alt="..."
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="card-fave-quote">
-            <div class="card-header">
-              All time Favorite Quote from a book is....
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A well-known quote, contained in a blockquote element.</p>
-                <footer class="blockquote-footer">
-                  Someone famous in{" "}
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote>
-            </div>
+          <div class="carousel-item">
+            <img
+              src="https://books.google.com/books/publisher/content?id=EHiLDQAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1FwdKzUlJEm31ppz-huBNucs4JHQ&w=1280"
+              height="500"
+              class="image-class"
+              alt="..."
+            />
           </div>
         </div>
-        
- 
+      </div>
+
+      <div class="card-fave-quote">
+        <div class="card-header">
+          All time Favorite Quote from a book is....
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>A well-known quote, contained in a blockquote element.</p>
+            <footer class="blockquote-footer">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
   );
 };

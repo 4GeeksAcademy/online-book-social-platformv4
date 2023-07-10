@@ -7,6 +7,8 @@ export const CreateAccount = () => {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const profession = event.target.profession.value;
+    
 
     console.log("Username:", username);
     console.log("Email:", email);
@@ -28,6 +30,22 @@ export const CreateAccount = () => {
         <div>
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" required />
+        </div>
+        <div>
+          <label htmlFor="profession">Profession:</label>
+          <input type="text" id="profession" name="profession" />
+        </div>
+        <div>
+          <label htmlFor="bio">Bio:</label>
+          <input type="text" id="bio" name="bio" />
+        </div>
+        <div>
+          <label htmlFor="twitter_username">Twitter Username:</label>
+          <input type="text" id="twitter_username" name="twitter_username" />
+        </div>
+        <div>
+          <label htmlFor="ig_username">IG Username:</label>
+          <input type="text" id="ig_username" name="ig_username" />
         </div>
         <button type="submit">Create Account</button>
       </form>
