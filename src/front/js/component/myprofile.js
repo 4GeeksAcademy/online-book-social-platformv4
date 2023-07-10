@@ -29,11 +29,11 @@ export const MyProfile = () => {
                     width="100"
                   />
                 </button>
-                <span class="name mt-3">Eleanor Pena</span>
-                <span class="idd">@eleanorpena</span>
+                <span class="name mt-3">Paige B</span>
+                <span class="idd">@paigebreads</span>
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
                   <span>
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i class="fa-solid fa-location-dot">Miami, Fl</i>
                   </span>
                 </div>
                 <div class="d-flex flex-row justify-content-center align-items-center mt-3">

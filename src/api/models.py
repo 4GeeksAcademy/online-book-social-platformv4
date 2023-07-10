@@ -2,8 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class Users(db.Model):
-    __tablename__="users"
+    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), unique=False, nullable=False)
     email = db.Column(db.String(250), unique=True, nullable=False)
@@ -12,8 +13,8 @@ class Users(db.Model):
     bio = db.Column(db.String(500), unique=False, nullable=True)
     twitter_username = db.Column(db.String(250), unique=False, nullable=True)
     ig_username = db.Column(db.String(250), unique=False, nullable=True)
-    favorite_book = db.Column(db.String(250), unique=False, nullable=False)
-    #discussions = db.relationship("Discussions", backref="created_by")
+
+    # discussions = db.relationship("Discussions", backref="created_by")
 
     def __repr__(self):
         return f'<Users {self.email}>'
@@ -21,22 +22,24 @@ class Users(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name, 
+            "name": self.name,
             "email": self.email,
             "profession": self.profession,
             "bio": self.bio,
             "twitter_username": self.twitter_username,
             "ig_username": self.ig_username,
-            "favorite_book": self.favorite_book,
+            
             # do not serialize the password, its a security breach
         }
-    
+
+
 class Discussions(db.Model):
-    __tablename__="discussions"
-    id=db.Column(db.Integer, primary_key=True)
+    __tablename__ = "discussions"
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    created_by = db.relationship("Users", backref="discussions", foreign_keys=[user_id])
-    discussion=db.Column(db.String(500), unique=False, nullable=False)
+    created_by = db.relationship(
+        "Users", backref="discussions", foreign_keys=[user_id])
+    discussion = db.Column(db.String(500), unique=False, nullable=False)
 
     def __repr__(self):
         return f'<Discussions {self.id}>'
@@ -44,8 +47,30 @@ class Discussions(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "created_by": self.created_by.serialize(), 
+            "created_by": self.created_by.serialize(),
             "discussion": self.discussion,
             # do not serialize the password, its a security breach
         }
-    
+
+
+class Profile(db.Model):
+    __tablename__ = "profile"
+    id = db.Column(db.Integer, primary_key=True)
+    favorite_book = db.Column(db.String(250), unique=False, nullable=False)
+    favorite_genres = db.Column(db.String(250), unique=False, nullable=False)
+    favorite_author = db.Column(db.String(250), unique=False, nullable=False)
+    number_books_read = db.Column(
+        db.Integer(250), unique=False, nullable=False)
+
+    def __repr__(self):
+        return f'<Profile {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+           "favorite_book": self.favorite_book,
+           "favorite_genres": self.favorite_genres,
+           "favorite_author": self.favorite_author,
+           "number_books_read": self.number_books_read,
+        
+        }
