@@ -86,6 +86,7 @@ h5.card-title {
   cursor: pointer;
   transition: all 0.5s;
   color: #dbd3ca; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   
 }
 
@@ -113,7 +114,8 @@ h5.card-title {
 
 .name {
   font-size: 22px;
-  font-weight: bold
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .idd {
@@ -169,3 +171,7 @@ hr .new1 {
   background-color: #ccc
 }
 
+.fa-solid {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, "Font Awesome 6 Free";
+  
+}

@@ -8,7 +8,10 @@ export const CreateAccount = () => {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const profession = event.target.profession.value;
+    const profession = event.target.profession.value;å
+    const bio = event.target.bio.value;
+    const twitter_username = event.target.twitter_username.value;
+    const ig_username = event.target.ig_username.value;
 
     console.log("Username:", username);
     console.log("Email:", email);

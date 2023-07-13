@@ -32,7 +32,7 @@ export const MyProfile = () => {
                 <span class="name mt-3">Paige B</span>
                 <span class="idd">@paigebreads</span>
                 <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                  <span>
+                  <span class="location">
                     <i class="fa-solid fa-location-dot">Miami, Fl</i>
                   </span>
                 </div>
@@ -49,7 +49,7 @@ export const MyProfile = () => {
                   <span>
                     Eleanor Pena <br></br> Artist/ Creative Director by Day #NFT
                     minting@ with FND night.
-                    <br></br>I've read over <em>number of books</em> books.
+                    <br></br>I've read over <input><em>number of books</em></input> books.
                   </span>
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">

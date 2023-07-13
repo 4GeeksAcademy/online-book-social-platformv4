@@ -1,4 +1,4 @@
-from   import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
@@ -59,8 +59,8 @@ class Profile(db.Model):
     favorite_book = db.Column(db.String(250), unique=False, nullable=False)
     favorite_genres = db.Column(db.String(250), unique=False, nullable=False)
     favorite_author = db.Column(db.String(250), unique=False, nullable=False)
-    number_books_read = db.Column(
-        db.Integer(250), unique=False, nullable=False)
+    number_books_read = db.Column(db.String(250), unique=False, nullable=False)
+        
 
     def __repr__(self):
         return f'<Profile {self.id}>'
@@ -71,6 +71,6 @@ class Profile(db.Model):
            "favorite_book": self.favorite_book,
            "favorite_genres": self.favorite_genres,
            "favorite_author": self.favorite_author,
-           "number_books_read": self.number_books_read,
+           "number_books_read": self.number_books_read
         
         }
