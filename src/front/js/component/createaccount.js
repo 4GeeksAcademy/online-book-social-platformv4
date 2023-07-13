@@ -4,11 +4,11 @@ export const CreateAccount = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const name = event.target.name.value;
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const profession = event.target.profession.value;
-    
 
     console.log("Username:", username);
     console.log("Email:", email);
@@ -19,6 +19,10 @@ export const CreateAccount = () => {
     <div>
       <h3>Create Account</h3>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
         <div>
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" name="username" required />
@@ -43,9 +47,19 @@ export const CreateAccount = () => {
           <label htmlFor="twitter_username">Twitter Username:</label>
           <input type="text" id="twitter_username" name="twitter_username" />
         </div>
-        <div>
-          <label htmlFor="ig_username">IG Username:</label>
-          <input type="text" id="ig_username" name="ig_username" />
+
+        <div class="input-group mb-3">
+          <label htmlFor="ig_username">IG</label>
+          <span class="input-group-text"id="basic-addon1">
+            @
+          </span>
+          <input
+            type="text" id="ig_username" name="ig_username"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
         </div>
         <button type="submit">Create Account</button>
       </form>
