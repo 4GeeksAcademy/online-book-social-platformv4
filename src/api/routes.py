@@ -56,3 +56,24 @@ def createUser():
     db.session.add(user)
     db.session.commit()
     return jsonify({"created": "Thanks. Your registration was successfully", "status": "true"}), 200
+  
+
+
+  # routes for profile page 
+  @api.route("/profile", methods=["POST"])
+  @jwt_required()
+  def addProfile():
+     uid= get_jwt_identity()
+     request_body= request.get_json(force=True)
+     favorite_book=request_body.get("favorite_book")
+     favorite_genre=request_body.get("favorite_genre")
+     favorite_author=request_body.get("favorite_author")
+     
+     return jsonify(request_body), 200
+
+
+  
+  @api.route("/profile", methods=["GET"])
+  @jwt_required()
+  def getProfile():
+    

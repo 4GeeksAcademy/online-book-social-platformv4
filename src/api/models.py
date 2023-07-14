@@ -60,6 +60,7 @@ class Profile(db.Model):
     favorite_genres = db.Column(db.String(250), unique=False, nullable=False)
     favorite_author = db.Column(db.String(250), unique=False, nullable=False)
     number_books_read = db.Column(db.String(250), unique=False, nullable=False)
+    current_user = db.relationship("User", backref="profile", lazy=True )
         
 
     def __repr__(self):

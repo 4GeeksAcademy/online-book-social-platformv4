@@ -49,7 +49,7 @@ export const MyProfile = () => {
                   <span>
                     Eleanor Pena <br></br> Artist/ Creative Director by Day #NFT
                     minting@ with FND night.
-                    <br></br>I've read over <input><em>number of books</em></input> books.
+                    <br></br>I've read over <input placeholder="number of books"/> books.
                   </span>
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">

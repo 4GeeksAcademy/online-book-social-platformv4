@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/createprofile.css"
 
 export const CreateProfile = () => {
   const handleSubmit = (event) => {
