@@ -32,7 +32,7 @@ def create_token():
       # create token
       expiration = datetime.timedelta(days=3)
       access_token = create_access_token(identity= user.id, expires_delta= expiration)
-      return jsonify(access_token=access_token)
+      return jsonify(access_token=access_token, user=user.serialize())
     return jsonify(msg="wrong user")
 # create user -----------------------------------------------------------------------------------------------------------
 @api.route('/createUser', methods=['POST'])
@@ -52,6 +52,10 @@ def createUser():
           name = request_body["name"],
           email = request_body["email"],
           password = generate_password_hash(request_body["password"]),
+          profession = request_body["profession"],
+          bio = request_body["bio"],
+          twitter_username = request_body["twitter_username"],
+          ig_username = request_body["ig_username"]
       )
     db.session.add(user)
     db.session.commit()
@@ -66,14 +70,27 @@ def createUser():
      uid= get_jwt_identity()
      request_body= request.get_json(force=True)
      favorite_book=request_body.get("favorite_book")
-     favorite_genre=request_body.get("favorite_genre")
+     favorite_genres=request_body.get("favorite_genre")
      favorite_author=request_body.get("favorite_author")
+     number_books_read=request_body.get("number_books_read")
      
+     new_profile = Profile(
+        favorite_book = favorite_book,
+        favorite_genres = favorite_genres,
+        favorite_author = favorite_author,
+        number_books_read = number_books_read
+     )
+     db.session.add(new_profile)
+     db.session.commit()
      return jsonify(request_body), 200
 
 
   
-  @api.route("/profile", methods=["GET"])
-  @jwt_required()
-  def getProfile():
+@api.route("/profile", methods=["GET"])
+@jwt_required()
+def getProfile():
+  uid = get_jwt_identity()
+  profile = profile.query.get(uid)
+     
+  return jsonify(profile.serialize())
     
