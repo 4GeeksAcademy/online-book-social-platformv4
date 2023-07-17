@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  return true;
 				} catch (error) {console.error(error)}
 			  },
-			  createUser: async (name, email, password, profession,  ) => {
+			  createUser: async (name, email, password, profession, bio,  ) => {
 				const cb_url = getStore().cb_url
 				
 				const opts = {
@@ -54,6 +54,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error);}
 			  },
 
+			  createProfile: async (email, password) => {
+				const cb_url = getStore().cb_url
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				  },
+				  body: JSON.stringify({
+					email: email,
+					password: password,
+				  }),
+				};
+				try {
+				  const res = await fetch(cb_url + "/api/login", opts);
+				 
+				  const data = await res.json();
+				  sessionStorage.setItem("token", data.access_token);
+				 
+				  setStore({ token: data.access_token });
+				  return true;
+				} catch (error) {console.error(error)}
+			  },
 
 
 
