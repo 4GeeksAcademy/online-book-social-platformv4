@@ -56,11 +56,12 @@ class Discussions(db.Model):
 class Profile(db.Model):
     __tablename__ = "profile"
     id = db.Column(db.Integer, primary_key=True)
-    favorite_book = db.Column(db.String(250), unique=False, nullable=False)
-    favorite_genres = db.Column(db.String(250), unique=False, nullable=False)
-    favorite_author = db.Column(db.String(250), unique=False, nullable=False)
-    number_books_read = db.Column(db.String(250), unique=False, nullable=False)
-    # current_user = db.relationship("User", backref="profile", lazy=True )
+    favorite_book = db.Column(db.String(250), unique=False, nullable=True)
+    favorite_genres = db.Column(db.String(250), unique=False, nullable=True)
+    favorite_author = db.Column(db.String(250), unique=False, nullable=True)
+    number_books_read = db.Column(db.String(250), unique=False, nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
         
 
     def __repr__(self):
@@ -69,9 +70,10 @@ class Profile(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-           "favorite_book": self.favorite_book,
-           "favorite_genres": self.favorite_genres,
-           "favorite_author": self.favorite_author,
-           "number_books_read": self.number_books_read
+            "favorite_book": self.favorite_book,
+            "favorite_genres": self.favorite_genres,
+            "favorite_author": self.favorite_author,
+            "number_books_read": self.number_books_read,
+            "user_id": self.user_id
         
         }

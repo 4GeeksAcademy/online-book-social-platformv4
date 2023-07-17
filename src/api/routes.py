@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Users
+from api.models import db, Users, Profile
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import create_access_token
@@ -87,10 +87,37 @@ def createUser():
 
   
 @api.route("/profile", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def getProfile():
-  uid = get_jwt_identity()
-  profile = profile.query.get(uid)
+  # uid = get_jwt_identity()
+  uid = 1
+  c_profile = Profile.query.filter_by(user_id=uid).first()
+
+  if c_profile is None:
+     return jsonify("Profile doesnt Exist")
      
-  return jsonify(profile.serialize())
-    
+  return jsonify(c_profile.serialize())
+
+
+@api.route("/profile", methods=["PUT"])
+@jwt_required()
+def updateProfile():
+   uid = get_jwt_identity()
+   profile = profile.query.get(uid)
+   data = request.json
+   favorite_book = data.get("favorite_book")
+   favorite_author = data.get("favorite_author")
+   favorite_genres = data.get("favorite_genres")
+   number_books_read = data.get("number_books_read")
+   if favorite_book is not None:
+      profile.favorite_book = favorite_book
+   if favorite_author is not None:
+      profile.favorite_author = favorite_author
+   if favorite_genres is not None:
+      profile.favorite_genres = favorite_author
+   if number_books_read is not None:
+      profile.number_books_read = number_books_read
+   
+   db.session.commit()
+
+   return jsonify(profile.serialize())

@@ -59,9 +59,14 @@ export const CreateProfile = () => {
           </ul>
         </section>
         <div>
-          <label htmlFor="email">Favorite Author:</label>
-          <input type="email" id="email" name="email" required />
+          <label htmlFor="name">Favorite Author:</label>
+          <input type="text" id="name" name="name" required />
         </div>
+        <div>
+          <label htmlFor="name">Favorite Quote from a book:</label>
+          <input type="text" id="quote" name="quote" required />
+        </div>
+  
         <button type="submit">Create Profile</button>
       </form>
       <div class="col-12">
