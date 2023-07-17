@@ -13,6 +13,7 @@ class Users(db.Model):
     bio = db.Column(db.String(500), unique=False, nullable=True)
     twitter_username = db.Column(db.String(250), unique=False, nullable=True)
     ig_username = db.Column(db.String(250), unique=False, nullable=True)
+    profile = db.relationship("Profile")
 
     # discussions = db.relationship("Discussions", backref="created_by")
 
@@ -60,7 +61,7 @@ class Profile(db.Model):
     favorite_genres = db.Column(db.String(250), unique=False, nullable=True)
     favorite_author = db.Column(db.String(250), unique=False, nullable=True)
     number_books_read = db.Column(db.String(250), unique=False, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
         
 
@@ -74,6 +75,6 @@ class Profile(db.Model):
             "favorite_genres": self.favorite_genres,
             "favorite_author": self.favorite_author,
             "number_books_read": self.number_books_read,
-            "user_id": self.user_id
+            # "user_id": self.user_id
         
         }
