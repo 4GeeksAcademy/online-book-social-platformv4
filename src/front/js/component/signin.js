@@ -6,9 +6,10 @@ export const SignIn = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const username = event.target.username.value;
+    const email = event.target.email.value;
     const password = event.target.password.value;
-
+    actions.login(email, password)
+    
     console.log("Email:", email);
     console.log("Password:", password);
   };
@@ -20,7 +21,7 @@ export const SignIn = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
-            <input type="username" id="username" name="username" required />
+            <input type="text" id="email" name="email" required />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>

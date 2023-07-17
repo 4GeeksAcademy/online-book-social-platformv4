@@ -18,7 +18,7 @@ export const MyProfile = () => {
           />
           <p class="alltime-fave">My All Time Favorite Book is....</p> */}
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
             <div class="card p-4">
               <div class=" image d-flex flex-column justify-content-center align-items-center">
@@ -73,18 +73,21 @@ export const MyProfile = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-      <div class="col-6">
-      <div class="card p-4" >
-        <h5 class="card-header">My Favorite Book is..</h5>
-        <div class="card-body">
-          <h5 class="card-title">Book Title</h5>
-          <span class="card-text">
-            -Author
-          </span>
+        <div class="col-8">
+          <div class="card p-4" >
+            <h5 class="card-header">My Favorite Book is..</h5>
+            <div class="card-body">
+              <h5 class="card-title">Book Title</h5>
+              <span class="card-text">
+                -Author
+              </span>
+            </div>
+          </div>
         </div>
       </div>
+      {/* <div class="row">
+      <div class="col-6">
+      
       </div>
       </div>
       <div class="row">
@@ -175,7 +178,7 @@ export const MyProfile = () => {
             </footer>
           </blockquote>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
