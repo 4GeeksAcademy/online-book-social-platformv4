@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  return true;
 				} catch (error) {console.error(error)}
 			  },
-			  createUser: async (name, email, password, profession, bio,  ) => {
+			  createUser: async (name, email, password, profession, bio, twitter_username, ig_username  ) => {
 				const cb_url = getStore().cb_url
 				
 				const opts = {
@@ -43,6 +43,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: name,
 					email: email,
 					password: password,
+					profession: profession,
+					bio: bio,
+					twitter_username: twitter_username, 
+					ig_username: ig_username
+
 				  }),
 				};
 				try {
@@ -54,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error);}
 			  },
 
-			  createProfile: async (email, password) => {
+			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quote) => {
 				const cb_url = getStore().cb_url
 				const opts = {
 				  method: "POST",
@@ -64,17 +69,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"Access-Control-Allow-Origin": "*",
 				  },
 				  body: JSON.stringify({
-					email: email,
-					password: password,
+					favorite_book: favorite_book,
+					favorite_genres: favorite_genres,
+					favorite_author: favorite_author,
+					number_books_read: number_books_read,
+					favorite_quote: favorite_quote
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/login", opts);
+				  const res = await fetch(cb_url + "/api/profile", opts);
 				 
 				  const data = await res.json();
-				  sessionStorage.setItem("token", data.access_token);
-				 
-				  setStore({ token: data.access_token });
+				  
 				  return true;
 				} catch (error) {console.error(error)}
 			  },

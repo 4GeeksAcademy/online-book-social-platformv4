@@ -18,7 +18,7 @@ export const MyProfile = () => {
           />
           <p class="alltime-fave">My All Time Favorite Book is....</p> */}
       <div class="row">
-        <div class="col-4">
+        <div class="col-6">
           <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
             <div class="card p-4">
               <div class=" image d-flex flex-column justify-content-center align-items-center">
@@ -49,7 +49,7 @@ export const MyProfile = () => {
                   <span>
                     Eleanor Pena <br></br> Artist/ Creative Director by Day #NFT
                     minting@ with FND night.
-                    <br></br>I've read over <input placeholder="number of books"/> books.
+                    <br></br>I've read over books.
                   </span>
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
@@ -73,25 +73,17 @@ export const MyProfile = () => {
             </div>
           </div>
         </div>
-        <div class="col-8">
-          <div class="card p-4" >
+        <div class="col-4">
+          <div class="card p-2">
             <h5 class="card-header">My Favorite Book is..</h5>
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
-              <span class="card-text">
-                -Author
-              </span>
+              <span class="card-text">-Author</span>
             </div>
           </div>
         </div>
       </div>
-      {/* <div class="row">
-      <div class="col-6">
-      
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
+      <div class="col-4">
           <p class="fave-genres">
             These are my favorite book genres and favorite book to match...
           </p>
@@ -129,6 +121,10 @@ export const MyProfile = () => {
             </a>
           </div>
         </div>
+      {/* </div>
+      </div>
+      <div class="row">
+        
       </div>
       <p class="book-collection row">
         These are a few books that are a part of my collection...
