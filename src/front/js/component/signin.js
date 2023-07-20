@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/signin.css";
+import { Context } from "../store/appContext";
 
 
 export const SignIn = () => {
+  const {store, actions} = useContext(Context)
   const handleSubmit = (event) => {
     event.preventDefault();
 

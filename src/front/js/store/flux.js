@@ -2,11 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null, 
-			cb_url: process.env.BACKEND_URL
+			backurl: "https://techprenuer1-studious-carnival-9vrpvq5q4ppc77xv-3001.preview.app.github.dev"
 		},
 		actions: {
 			login: async (email, password) => {
-				const cb_url = getStore().cb_url
+				const backurl = getStore().backurl
 				const opts = {
 				  method: "POST",
 				  mode: "cors",
@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/login", opts);
+				  const res = await fetch(backurl + "/api/login", opts);
 				 
 				  const data = await res.json();
 				  sessionStorage.setItem("token", data.access_token);
@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error)}
 			  },
 			  createUser: async (name, email, password, profession, bio, twitter_username, ig_username  ) => {
-				const cb_url = getStore().cb_url
+				const backurl = getStore().backurl
 				
 				const opts = {
 				  method: "POST",
@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/createUser", opts);
+				  const res = await fetch(backurl + "/api/createUser", opts);
 				 
 				  const data = await res.json();
 				  
@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 
 			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quotes) => {
-				const cb_url = getStore().cb_url
+				const backurl = getStore().backurl
 				const opts = {
 				  method: "POST",
 				  mode: "cors",
@@ -77,7 +77,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/profile", opts);
+					console.log(backurl+"/api/profile")
+				  const res = await fetch(backurl + "/api/profile", opts);
 				 
 				  const data = await res.json();
 				  

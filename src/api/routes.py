@@ -99,10 +99,10 @@ def addProfile():
 
   
 @api.route("/profile", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def getProfile():
-  # uid = get_jwt_identity()
-  uid = 1
+  uid = get_jwt_identity()
+  # uid = 1
   c_profile = Profile.query.filter_by(user_id=uid).first()
 
   if c_profile is None:
