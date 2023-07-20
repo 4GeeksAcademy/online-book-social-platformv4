@@ -67,6 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + sessionStorage.getItem("token")
 				  },
 				  body: JSON.stringify({
 					favorite_book: favorite_book,

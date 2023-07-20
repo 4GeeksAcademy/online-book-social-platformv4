@@ -21,51 +21,38 @@ div.card-fave-quote {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-p.fave-genres {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-style: oblique;
-  color: #3f4c69;
-}
-
-p.book-collection {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-style: oblique;
-  color: #3f4c69;
-}
-
-p.alltime-fave {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-style: oblique;
-  color: #3f4c69;
-}
-
-div.fave-alltime {
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #796d62;
+div.card-fave-author {
+  margin-top: 30px;
+  background-color: #3f4c69;
   color: #dbd3ca;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  object-fit: contain;
 }
+
+div.fave-genres {
+  margin-top: 30px;
+  background-color: #3f4c69;
+  color: #dbd3ca;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+div.fave-book {
+  margin-top: 30px;
+  background-color: #3f4c69;
+  color: #dbd3ca;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+
+
+
+
+
 
 h5.card-title {
   size: 100%;
 }
 
-.carousel-slide {
-  display: flex;
-  justify-content: center;
-  padding-left: 400px;
-}
+
 
 .list-group-item {
   background-color: #796d62;
@@ -120,7 +107,8 @@ h5.card-title {
 
 .idd {
   font-size: 14px;
-  font-weight: 600
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
 }
 
 .idd1 {
@@ -142,9 +130,10 @@ h5.card-title {
   height: 40px;
   width: 150px;
   border: none;
-  background-color: #000;
-  color: #aeaeae;
-  font-size: 15px
+  background-color: #3f4c69;
+  color: black;
+  font-size: 15px;
+  padding: none
 }
 
 .text span {
@@ -154,7 +143,8 @@ h5.card-title {
 }
 
 .icons i {
-  font-size: 19px
+  font-size: 19px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 hr .new1 {
@@ -176,3 +166,20 @@ hr .new1 {
   
 }
 
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.profile_info {
+  display: flex;
+  padding: 1rem;
+}
+
+address {
+  padding: 1rem;
+  font-style: italic;
+}

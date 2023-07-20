@@ -27,8 +27,8 @@ def create_token():
       user = Users.query.filter_by(email=email).first()
       if not user:
           return jsonify({"msg": "Email/Password are incorrect"}), 401
-      if not check_password_hash(user.password, password):
-          return jsonify({"msg": "Username/Password are incorrect"}), 401
+      # if not check_password_hash(user.password, password):
+      #     return jsonify({"msg": "Username/Password are incorrect"}), 401
       # create token
       expiration = datetime.timedelta(days=3)
       access_token = create_access_token(
@@ -73,9 +73,9 @@ def get_all_users():
 
   # routes for profile page
 @api.route("/profile", methods=["POST"])
-  # @jwt_required()
+@jwt_required()
 def addProfile():
-    #  uid= get_jwt_identity()
+     uid= get_jwt_identity()
      request_body= request.get_json(force=True)
      favorite_book=request_body.get("favorite_book")
      favorite_genres=request_body.get("favorite_genres")
@@ -90,7 +90,7 @@ def addProfile():
         favorite_author = favorite_author,
         number_books_read = number_books_read,
         favorite_quotes = favorite_quotes,
-        user_id = user_id
+        user_id = uid
      )
      db.session.add(new_profile)
      db.session.commit()

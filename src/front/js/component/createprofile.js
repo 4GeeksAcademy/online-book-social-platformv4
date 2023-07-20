@@ -47,39 +47,6 @@ export const CreateProfile = () => {
             Fiction
           </option>
         </select>
-        {/* <div>
-          <label htmlFor="username">Favorite Genre:</label>
-          <input type="text" id="username" name="username" required />
-        </div> */}
-        {/* <section class="content">
-          <span>Favorite Genre:</span>
-          <ul class="list">
-            <li class="list__item">
-              <label class="label--checkbox">
-                <input type="checkbox" class="checkbox" name="romance"/>
-                Romance
-              </label>
-            </li>
-            <li class="list__item">
-              <label class="label--checkbox">
-                <input type="checkbox" class="checkbox" name="comedy" />
-                Comedy
-              </label>
-            </li>
-            <li class="list__item">
-              <label class="label--checkbox">
-                <input type="checkbox" class="checkbox" name="biography"/>
-                Biography
-              </label>
-            </li>
-            <li class="list__item">
-              <label class="label--checkbox">
-                <input type="checkbox" class="checkbox" name="fiction"/>
-                Fiction
-              </label>
-            </li>
-          </ul>
-        </section> */}
         <div>
           <label htmlFor="name">Number Books I Read</label>
           <input type="text" id="name" name="number_books_read"/>
