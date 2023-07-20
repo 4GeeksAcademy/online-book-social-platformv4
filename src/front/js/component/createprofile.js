@@ -46,6 +46,15 @@ export const CreateProfile = () => {
           <option value="fiction">
             Fiction
           </option>
+          <option value="fiction">
+            Non-Fiction
+          </option>
+          <option value="fiction">
+            Biography
+          </option>
+          <option value="fiction">
+            Self-Development
+          </option>
         </select>
         <div>
           <label htmlFor="name">Number Books I Read</label>
