@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error);}
 			  },
 
-			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quote) => {
+			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quotes) => {
 				const cb_url = getStore().cb_url
 				const opts = {
 				  method: "POST",
@@ -73,7 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favorite_genres: favorite_genres,
 					favorite_author: favorite_author,
 					number_books_read: number_books_read,
-					favorite_quote: favorite_quote
+					favorite_quotes: favorite_quotes
 				  }),
 				};
 				try {

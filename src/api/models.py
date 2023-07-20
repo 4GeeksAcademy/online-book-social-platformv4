@@ -61,7 +61,7 @@ class Profile(db.Model):
     favorite_genres = db.Column(db.String(250), unique=False, nullable=True)
     favorite_author = db.Column(db.String(250), unique=False, nullable=True)
     number_books_read = db.Column(db.String(250), unique=False, nullable=True)
-    favorite_quote = db.Column(db.String(250), unique=False, nullable=True)
+    favorite_quotes = db.Column(db.String(250), unique=False, nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
@@ -77,7 +77,7 @@ class Profile(db.Model):
             "favorite_genres": self.favorite_genres,
             "favorite_author": self.favorite_author,
             "number_books_read": self.number_books_read,
-            "favorite_quote": self.favorite_quote
+            "favorite_quotes": self.favorite_quotes
             # "user_id": self.user_id
         
         }

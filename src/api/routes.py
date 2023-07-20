@@ -81,7 +81,7 @@ def addProfile():
      favorite_genres=request_body.get("favorite_genres")
      favorite_author=request_body.get("favorite_author")
      number_books_read=request_body.get("number_books_read")
-     favorite_quote=request_body.get("favorite_quote")
+     favorite_quotes=request_body.get("favorite_quote")
      user_id=request_body.get("user_id")
      
      new_profile = Profile(
@@ -89,7 +89,7 @@ def addProfile():
         favorite_genres = favorite_genres,
         favorite_author = favorite_author,
         number_books_read = number_books_read,
-        favorite_quote = favorite_quote,
+        favorite_quotes = favorite_quotes,
         user_id = user_id
      )
      db.session.add(new_profile)
@@ -121,7 +121,7 @@ def updateProfile():
    favorite_author = data.get("favorite_author")
    favorite_genres = data.get("favorite_genres")
    number_books_read = data.get("number_books_read")
-   favorite_quote = data.get("favorite_quote")
+   favorite_quotes = data.get("favorite_quote")
    if favorite_book is not None:
       profile.favorite_book = favorite_book
    if favorite_author is not None:
@@ -130,8 +130,8 @@ def updateProfile():
       profile.favorite_genres = favorite_author
    if number_books_read is not None:
       profile.number_books_read = number_books_read
-   if favorite_quote is not None:
-      profile.favorite_quote = favorite_quote
+   if favorite_quotes is not None:
+      profile.favorite_quotes = favorite_quotes
    db.session.commit()
 
    return jsonify(profile.serialize())
