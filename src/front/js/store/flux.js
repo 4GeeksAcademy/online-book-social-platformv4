@@ -2,11 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null, 
-			cb_url: process.env.BACKEND_URL
+			backurl: process.env.BACKEND_URL,
+			profile: [] 
 		},
 		actions: {
 			login: async (email, password) => {
-				const cb_url = getStore().cb_url
+				const backurl = getStore().backurl
 				const opts = {
 				  method: "POST",
 				  mode: "cors",
@@ -20,17 +21,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/login", opts);
+				  const res = await fetch(backurl + "/api/login", opts);
 				 
 				  const data = await res.json();
 				  sessionStorage.setItem("token", data.access_token);
-				 
+				 console.log(data)
 				  setStore({ token: data.access_token });
 				  return true;
 				} catch (error) {console.error(error)}
 			  },
-			  createUser: async (name, email, password, profession,  ) => {
-				const cb_url = getStore().cb_url
+			  createUser: async (name, email, password, profession, bio, twitter_username, ig_username  ) => {
+				const backurl = getStore().backurl
 				
 				const opts = {
 				  method: "POST",
@@ -43,10 +44,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: name,
 					email: email,
 					password: password,
+					profession: profession,
+					bio: bio,
+					twitter_username: twitter_username, 
+					ig_username: ig_username
+
 				  }),
 				};
 				try {
-				  const res = await fetch(cb_url + "/api/createUser", opts);
+				  const res = await fetch(backurl + "/api/createUser", opts);
 				 
 				  const data = await res.json();
 				  
@@ -54,7 +60,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error);}
 			  },
 
+			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quotes) => {
+				const backurl = getStore().backurl
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + sessionStorage.getItem("token")
+				  },
+				  body: JSON.stringify({
+					favorite_book: favorite_book,
+					favorite_genres: favorite_genres,
+					favorite_author: favorite_author,
+					number_books_read: number_books_read,
+					favorite_quotes: favorite_quotes
+				  }),
+				};
+				try {
+					console.log(backurl+"/api/profile")
+				  const res = await fetch(backurl + "/api/profile", opts);
+				 
+				  const data = await res.json();
+				  
+				  return true;
+				} catch (error) {console.error(error)}
+			  },
 
+			  getProfile: async () => {
+				const store = getStore();
+				const opts = {
+				  method: "GET",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + store.token,
+				  },
+				};
+				try {
+				  const response = await fetch(store.backurl + "/api/profile", opts);
+				  const data = await response.json();
+				  console.log(store.token, "this is data") ;
+				  console.log(process.env.BACKEND_URL, "this is routes");
+				  setStore({ profile: data });
+				} catch (error) {
+				  console.error(error);
+				}
+			  },
 
 
 

@@ -27,14 +27,17 @@ def create_token():
       user = Users.query.filter_by(email=email).first()
       if not user:
           return jsonify({"msg": "Email/Password are incorrect"}), 401
-      if not check_password_hash(user.password, password):
-          return jsonify({"msg": "Username/Password are incorrect"}), 401
+      # if not check_password_hash(user.password, password):
+      #     return jsonify({"msg": "Username/Password are incorrect"}), 401
       # create token
       expiration = datetime.timedelta(days=3)
-      access_token = create_access_token(identity= user.id, expires_delta= expiration)
+      access_token = create_access_token(
+          identity=user.id, expires_delta=expiration)
       return jsonify(access_token=access_token, user=user.serialize())
     return jsonify(msg="wrong user")
 # create user -----------------------------------------------------------------------------------------------------------
+
+
 @api.route('/createUser', methods=['POST'])
 def createUser():
   if request.method == 'POST':
@@ -49,48 +52,57 @@ def createUser():
     if user:
       return jsonify({"msg": "User already exists"}), 400
     user = Users(
-          name = request_body["name"],
-          email = request_body["email"],
-          password = generate_password_hash(request_body["password"]),
-          profession = request_body["profession"],
-          bio = request_body["bio"],
-          twitter_username = request_body["twitter_username"],
-          ig_username = request_body["ig_username"]
+          name=request_body["name"],
+          email=request_body["email"],
+          password=generate_password_hash(request_body["password"]),
+          profession=request_body["profession"],
+          bio=request_body["bio"],
+          twitter_username=request_body["twitter_username"],
+          ig_username=request_body["ig_username"]
       )
     db.session.add(user)
     db.session.commit()
     return jsonify({"created": "Thanks. Your registration was successfully", "status": "true"}), 200
-  
 
 
-  # routes for profile page 
-  @api.route("/profile", methods=["POST"])
-  @jwt_required()
-  def addProfile():
+@api.route('/users', methods=['GET'])
+def get_all_users():
+    users_list = Users.query.all()
+    users_serialized = [users.serialize() for users in users_list]
+    return jsonify(users_serialized), 200
+
+  # routes for profile page
+@api.route("/profile", methods=["POST"])
+@jwt_required()
+def addProfile():
      uid= get_jwt_identity()
      request_body= request.get_json(force=True)
      favorite_book=request_body.get("favorite_book")
-     favorite_genres=request_body.get("favorite_genre")
+     favorite_genres=request_body.get("favorite_genres")
      favorite_author=request_body.get("favorite_author")
      number_books_read=request_body.get("number_books_read")
+     favorite_quotes=request_body.get("favorite_quote")
+     user_id=request_body.get("user_id")
      
      new_profile = Profile(
         favorite_book = favorite_book,
         favorite_genres = favorite_genres,
         favorite_author = favorite_author,
-        number_books_read = number_books_read
+        number_books_read = number_books_read,
+        favorite_quotes = favorite_quotes,
+        user_id = uid
      )
      db.session.add(new_profile)
      db.session.commit()
-     return jsonify(request_body), 200
+     return jsonify("Profile Created"), 200
 
 
   
 @api.route("/profile", methods=["GET"])
-# @jwt_required()
+@jwt_required()
 def getProfile():
-  # uid = get_jwt_identity()
-  uid = 1
+  uid = get_jwt_identity()
+  # uid = 1
   c_profile = Profile.query.filter_by(user_id=uid).first()
 
   if c_profile is None:
@@ -109,6 +121,7 @@ def updateProfile():
    favorite_author = data.get("favorite_author")
    favorite_genres = data.get("favorite_genres")
    number_books_read = data.get("number_books_read")
+   favorite_quotes = data.get("favorite_quote")
    if favorite_book is not None:
       profile.favorite_book = favorite_book
    if favorite_author is not None:
@@ -117,7 +130,8 @@ def updateProfile():
       profile.favorite_genres = favorite_author
    if number_books_read is not None:
       profile.number_books_read = number_books_read
-   
+   if favorite_quotes is not None:
+      profile.favorite_quotes = favorite_quotes
    db.session.commit()
 
    return jsonify(profile.serialize())
