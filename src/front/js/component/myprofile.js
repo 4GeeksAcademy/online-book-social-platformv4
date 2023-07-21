@@ -7,29 +7,8 @@ import { useResolvedPath } from "react-router-dom";
 export const MyProfile = () => {
   const { store, actions } = useContext(Context);
   const [profile, setProfile] = useState({});
-  const getProfile = async () => {
-    const opts = {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: "Bearer " + store.token,
-      },
-    };
-    try {
-      const response = await fetch(store.backurl + "/api/profile", opts);
-      const data = await response.json();
-      console.log(data);
-      setProfile(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
 
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   return (
     <div className="container">

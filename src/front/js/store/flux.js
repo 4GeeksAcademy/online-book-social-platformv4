@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null, 
-			backurl: "https://techprenuer1-studious-carnival-9vrpvq5q4ppc77xv-3001.preview.app.github.dev"
+			backurl: process.env.BACKEND_URL,
+			profile: [] 
 		},
 		actions: {
 			login: async (email, password) => {
@@ -24,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				 
 				  const data = await res.json();
 				  sessionStorage.setItem("token", data.access_token);
-				 
+				 console.log(data)
 				  setStore({ token: data.access_token });
 				  return true;
 				} catch (error) {console.error(error)}
@@ -87,6 +88,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error)}
 			  },
 
+			  getProfile: async () => {
+				const store = getStore();
+				const opts = {
+				  method: "GET",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + store.token,
+				  },
+				};
+				try {
+				  const response = await fetch(store.backurl + "/api/profile", opts);
+				  const data = await response.json();
+				  console.log(store.token, "this is data") ;
+				  console.log(process.env.BACKEND_URL, "this is routes");
+				  setStore({ profile: data });
+				} catch (error) {
+				  console.error(error);
+				}
+			  },
 
 
 
