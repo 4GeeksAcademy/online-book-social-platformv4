@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import React, { useContext } from "react";
+=======
+import React, {useContext, useEffect} from "react";
+
+import { useNavigate } from "react-router-dom";
+>>>>>>> 383fe4d (cats updates)
 import "../../styles/signin.css";
 import { Context } from "../store/appContext";
 
@@ -12,7 +18,9 @@ export const SignIn = () => {
     const password = event.target.password.value;
     actions.login(email, password)
   };
-
+useEffect(() => {
+  if (store.token != "" && store.token != undefined) useNavigate("/")
+}, [store.token, useNavigate()]) 
   return (
     <div className="signin-container">
       <div className="signin-form">
