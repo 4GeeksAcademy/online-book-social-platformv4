@@ -41,6 +41,7 @@ class Discussions(db.Model):
     created_by = db.relationship(
         "Users", backref="discussions", foreign_keys=[user_id])
     discussion = db.Column(db.String(500), unique=False, nullable=False)
+    title=db.Column(db.String(250) , nullable=False, unique=False)
 
     def __repr__(self):
         return f'<Discussions {self.id}>'
@@ -50,6 +51,7 @@ class Discussions(db.Model):
             "id": self.id,
             "created_by": self.created_by.serialize(),
             "discussion": self.discussion,
+            "title": self.title
             # do not serialize the password, its a security breach
         }
 

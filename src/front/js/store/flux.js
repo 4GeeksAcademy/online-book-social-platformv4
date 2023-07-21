@@ -3,7 +3,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null, 
 			backurl: process.env.BACKEND_URL,
-			profile: [] 
+			profile: [], 
+			demo: [
+				{
+					title: "FIRST",
+					background: "white",
+					initial: "white"
+				},
+				{
+					title: "SECOND",
+					background: "white",
+					initial: "white"
+				}
+			]
 		},
 		actions: {
 			login: async (email, password) => {
@@ -134,7 +146,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			}, 
+			getAllDiscussions: () => {
+				fetch(backurl + "/api/discussions")
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data)
+					setStore();
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+			}, 
+			createDiscussion: async (title, discussion) => {
+				let token=getStore().token
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					Authorization: "Bearer " + token,
+				  },
+				  body: JSON.stringify({
+					title: title,
+					discussion: discussion,
+				  }),
+				};
+				try {
+				  const res = await fetch(backurl+ "/api/discussions", opts);
+				  const data = await res.json();
+				  
+				  return true;
+				} catch (error) {console.error(error);}
+			  },
 		}
 	};
 };

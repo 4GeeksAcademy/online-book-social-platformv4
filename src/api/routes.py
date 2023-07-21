@@ -3,6 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Users, Profile
+from api.models import db, Users, Discussions
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import create_access_token
@@ -135,3 +136,22 @@ def updateProfile():
    db.session.commit()
 
    return jsonify(profile.serialize())
+@api.route("/discussions", methods=['GET'])
+def getAllDiscussions(): 
+  discussions =Discussions.querry.all()
+  discussions_dic=[discussion.serialize() for discussion in discussions]
+  return jsonify(discussions_dic)
+
+@api.route("discussions", methods=['POST'])
+@jwt_required()
+def createDiscussion():
+  user_id = get_jwt_identity()
+  body = request.get_json()
+  new_discussion = Discussions(
+    user_id=user_id, 
+    discussion=body["discussion"], 
+    title = body["title"]
+  )
+  db.session.add(new_discussion)
+  db.session.commit()
+  return jsonify(new_discussion.serialize())
