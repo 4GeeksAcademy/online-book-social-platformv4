@@ -1,21 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			token: null, 
-			backurl: process.env.BACKEND_URL,
-			profile: [], 
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			token: null,
+			backurl: "https://crob001-humble-space-guide-r99xj9459vgc649-3001.preview.app.github.dev",
+			fronturl: "https://crob001-humble-space-guide-r99xj9459vgc649-3000.preview.app.github.dev",
+			discussions: []
 		},
 		actions: {
 			login: async (email, password) => {
@@ -147,39 +136,80 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			}, 
-			getAllDiscussions: () => {
-				fetch(backurl + "/api/discussions")
-				.then((res) => res.json())
-				.then((data) => {
-					console.log(data)
-					setStore();
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-			}, 
-			createDiscussion: async (title, discussion) => {
-				let token=getStore().token
+			syncSessionToStore: () => {
+                let ssToken = sessionStorage.getItem('token')
+                setStore({ token:ssToken })
+            },
+            getAllDiscussions: () => {
+                let backurl = getStore().backurl
+                fetch(backurl + "/api/discussions")
+                .then((res) => res.json())
+                .then((data) => {
+                    setStore({ discussions: data });
+                })
+                .catch((error) => {
+                    console.error("GET ALL DISCUSSIONS flux",error);
+                });
+            },
+
+			createAccount: async (name, email, password, profession, bio, twitter, ig) => {
+				let backurl=getStore().backurl
+				let fronturl=getStore().fronturl
 				const opts = {
 				  method: "POST",
 				  mode: "cors",
 				  headers: {
 					"Content-Type": "application/json",
 					"Access-Control-Allow-Origin": "*",
-					Authorization: "Bearer " + token,
 				  },
 				  body: JSON.stringify({
-					title: title,
-					discussion: discussion,
+					name: name,
+					email: email,
+					password: password,
+					profession: profession, 
+					bio: bio,
+					twitter: twitter, 
+					ig: ig
 				  }),
 				};
 				try {
-				  const res = await fetch(backurl+ "/api/discussions", opts);
+				  const res = await fetch(backurl + "/api/createAccount", opts);
+				 
 				  const data = await res.json();
-				  
+					if(data.status==="true"){
+						window.location.href= fronturl 
+					}
 				  return true;
 				} catch (error) {console.error(error);}
 			  },
+			  login: async (email, password) => {
+				const backurl = getStore().backurl
+				const fronturl=getStore().fronturl
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				  },
+				  body: JSON.stringify({
+					email: email,
+					password: password,
+				  }),
+				};
+				try {
+				  const res = await fetch(backurl + "/api/login", opts);
+				  const data = await res.json();
+				  sessionStorage.setItem("token", data.access_token);
+				  setStore({ token: data.access_token });
+				  if(data.status==="true"){
+					window.location.href= fronturl + "/profile"
+				}
+					syncSessionToStore()
+				  return true;
+				} catch (error) {console.error(error)}
+			  },
+
 		}
 	};
 };

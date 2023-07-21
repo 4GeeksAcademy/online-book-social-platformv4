@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Modal from '../component/modal';
+import { Context } from '../store/appContext';
+import CreateDiscussionModal from "../component/creatediscussionmodal"
+import { Link } from 'react-router-dom';
+import "../../styles/bookdiscussions.css"
 
 export const BookDiscussions = () => {
+  const {store, actions} = useContext(Context)
   return (
     <div className="DiscussionContainer justify-content-center d-flex flex-column mx-auto w-100">
       <div className="DiscussionsTop justify-content-center d-flex">
@@ -9,78 +14,27 @@ export const BookDiscussions = () => {
         <div className="DiscussionForms ml-5">
           <h1 className="">Search What People Are Saying</h1>
           <div className="DiscussionDiv">
-            <input placeholder="Search titles..." className="rounded-pill search"></input>
-            <input placeholder="Search topics..." className="rounded-pill"></input>
+            <input placeholder="Search discussions..." className="rounded-pill search"></input>
+            {/* <input placeholder="Search topics..." className="rounded-pill"></input> */}
           </div>
 
-          <Modal/>
+          <CreateDiscussionModal/>
 
         </div>
       </div>
       <div className="DiscussionsBottom w-75 d-flex justify-content-center">
-        <div className="d-flex flex-wrap">
-          <div className="UserPost">
-            <img src="https://i.imgur.com/pSbtAu2.png" />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
-
-          <div className="UserPost">
-            <img src="..." />
-            <p>"Post Title"
-            </p>
-
-          </div>
+        <div className="discussioncontainer">
+          
+        {
+                    store.discussions.map((item,idx) => {
+                        return (
+                            <div className="discussion-card" key={idx}>
+                                <p>{item.createdBy.name}</p>
+                                <Link to={"/discussion/"+ item.id}><p>{item.title}</p></Link>
+                            </div>
+                        )
+                    })
+                }
 
         </div>
 

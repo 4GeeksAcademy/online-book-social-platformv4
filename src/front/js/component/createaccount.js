@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const CreateAccount = () => {
+  const {store, actions} = useContext(Context)
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -28,6 +30,7 @@ export const CreateAccount = () => {
         </div>
         <div>
           <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Name:</label>
           <input type="text" id="username" name="username" required />
         </div>
         <div>
@@ -48,13 +51,12 @@ export const CreateAccount = () => {
         </div>
         <div>
           <label htmlFor="twitter_username">Twitter Username:</label>
-          <input type="text" id="twitter_username" name="twitter_username" />
+          <input type="text" id="twitter_username" name="twitter" />
         </div>
 
         <div class="input-group mb-3">
           <label htmlFor="ig_username">IG</label>
           <span class="input-group-text"id="basic-addon1">
-            @
           </span>
           <input
             type="text" id="ig_username" name="ig_username"
@@ -63,6 +65,10 @@ export const CreateAccount = () => {
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
+          </div>
+        <div>
+          <label htmlFor="ig_username">IG Username:</label>
+          <input type="text" id="ig_username" name="ig" />
         </div>
         <button type="submit">Create Account</button>
       </form>

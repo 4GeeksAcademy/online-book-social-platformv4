@@ -11,9 +11,6 @@ export const SignIn = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     actions.login(email, password)
-    
-    console.log("Email:", email);
-    console.log("Password:", password);
   };
 
   return (
@@ -22,8 +19,8 @@ export const SignIn = () => {
         <h3>Sign In</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="email" name="email" required />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" required />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>
