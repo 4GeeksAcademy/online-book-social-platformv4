@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null, 
 			backurl: process.env.BACKEND_URL,
-			profile: [] 
+			profile: [],
+			currentUser: null
 		},
 		actions: {
 			login: async (email, password) => {
@@ -26,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const data = await res.json();
 				  sessionStorage.setItem("token", data.access_token);
 				 console.log(data)
-				  setStore({ token: data.access_token });
+				  setStore({ token: data.access_token, currentUser:data.user });
 				  return true;
 				} catch (error) {console.error(error)}
 			  },

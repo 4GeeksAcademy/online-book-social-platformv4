@@ -5,8 +5,31 @@ import { Context } from "../store/appContext";
 import { useResolvedPath } from "react-router-dom";
 
 export const MyProfile = () => {
-  const { store, actions } = useContext(Context);
-  const [profile, setProfile] = useState({});
+  const {store, actions} = useContext(Context)
+  const [profile, setProfile] = useState({})
+  let user= store.currentUser
+  console.log(user)
+  const getProfile = async() => {
+    const opts = {
+      method: "GET",
+      mode: "cors",
+      headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: "Bearer " + store.token
+      }
+    }
+    try {
+      const response = await fetch(store.backurl + "/api/profile", opts)
+      const data = await response.json()
+      console.log(data)
+      setProfile(data)
+    } catch (error) {console.error(error)}
+  }
+
+  useEffect(()=>{
+    getProfile()
+  },[])
   
 
 
@@ -42,11 +65,11 @@ export const MyProfile = () => {
                 <div class="text mt-3">
                   <p class="profile_info">
                 {/* //Need to update users to be able to use here// */}
-                    Name<br></br> 
-                    Profession<br></br>
-                    Bio<br></br>
-                    Twitter<br></br>
-                    Instagram<br></br>
+                    {user?user.name:""}<br></br> 
+                    {user?user.profession:""}<br></br>
+                    {user?user.bio:""}<br></br>
+                    Twitter: {user?user.twitter_username:""}<br></br>
+                    Instagram: {user?user.ig_username:""}<br></br>
                   </p>
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">

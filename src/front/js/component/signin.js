@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
 import "../../styles/signin.css";
 import { Context } from "../store/appContext";
+// import { useNavigate} from "react-router-dom"
 
 
 export const SignIn = () => {
   const {store, actions} = useContext(Context)
+  // let navigate= useNavigate()
+  // useEffect (()=>{
+  //   if (store.token!== null) {
+  //     navigate("/myprofile")
+  //   }
+  // },[store.token])
   const handleSubmit = (event) => {
     event.preventDefault();
 
