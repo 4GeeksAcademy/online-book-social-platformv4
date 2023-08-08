@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
+import {Context} from "../store/appContext"
+import { FaAcquisitionsIncorporated } from "react-icons/fa";
 
 export const CreateAccount = () => {
+  const {store, actions} = useContext(Context)
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -8,10 +11,13 @@ export const CreateAccount = () => {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const profession = event.target.profession.value;å
+    const profession = event.target.profession.value;
     const bio = event.target.bio.value;
     const twitter_username = event.target.twitter_username.value;
     const ig_username = event.target.ig_username.value;
+    actions.createUser(name, email, password, profession, bio, twitter_username, ig_username)
+
+
 
     console.log("Username:", username);
     console.log("Email:", email);

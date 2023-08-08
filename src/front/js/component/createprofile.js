@@ -3,7 +3,7 @@ import "../../styles/createprofile.css"
 import { number } from "prop-types";
 import { Context }from "../store/appContext"
 
-export const CreateProfile = () => {
+export const UpdateProfile = () => {
   const {store, actions}= useContext(Context)
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ export const CreateProfile = () => {
     console.log("favorite_author:", favorite_author);
     console.log("favorite_quote:", favorite_quote);
     console.log("number_books_read", number_books_read);
-    actions.createProfile(favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quote)  
+    actions.updateProfile(favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quote)  
   };
 
     

@@ -14,7 +14,7 @@ import { BookDiscussions } from "./component/bookdiscussions";
 import { MyProfile } from "./component/myprofile";
 import { SignIn } from "./component/signin";
 import { CreateAccount } from "./component/createaccount";
-import { CreateProfile } from "./component/createprofile";
+import { UpdateProfile } from "./component/createprofile";
 
 //create your first component
 const Layout = () => {
@@ -34,7 +34,7 @@ const Layout = () => {
             <Route path="/myprofile" element={<MyProfile />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/createaccount" element={<CreateAccount />} />
-            <Route path="/createprofile" element={<CreateProfile />} />
+            <Route path="/updateprofile" element={<UpdateProfile />} />
             <Route path="*" element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

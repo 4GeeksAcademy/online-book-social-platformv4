@@ -20,7 +20,7 @@ export const NavbarMenu = () => {
           <NavDropdown title={<span><FaUser className="nav-icon" /> My Account</span>} id="basic-nav-dropdown">
             <Link to="/signin" className="dropdown-item">Sign In</Link>
             <Link to="/createaccount" className="dropdown-item">Create Account</Link>
-            <Link to="/createprofile" className="dropdown-item">Create Profile</Link>
+            <Link to="/updateprofile" className="dropdown-item">Update Profile</Link>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

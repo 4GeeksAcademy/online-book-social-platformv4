@@ -61,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {console.error(error);}
 			  },
 
-			  createProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quotes) => {
+			  updateProfile: async (favorite_book, favorite_genres, favorite_author, number_books_read, favorite_quotes) => {
 				const backurl = getStore().backurl
 				const opts = {
 				  method: "POST",
