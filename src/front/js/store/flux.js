@@ -56,6 +56,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const res = await fetch(backurl + "/api/createUser", opts);
 				 
 				  const data = await res.json();
+				  console.log(data)
+				if (data.status==="true") {
+					window.location.href="https://techprenuer1-studious-carnival-9vrpvq5q4ppc77xv-3000.app.github.dev/signin"
+				}
 				  
 				  return true;
 				} catch (error) {console.error(error);}

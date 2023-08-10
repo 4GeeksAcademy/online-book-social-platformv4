@@ -183,3 +183,12 @@ address {
   padding: 1rem;
   font-style: italic;
 }
+
+.update-profile-btn {
+  background-color: #3f4c69 !important;
+  border: none;
+  border-radius: 0.356rem;
+  color: white;
+  padding: 5px;
+
+}

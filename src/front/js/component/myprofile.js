@@ -4,6 +4,7 @@ import "../../styles/myprofile.css";
 import { Context } from "../store/appContext";
 import { useResolvedPath } from "react-router-dom";
 import { Link } from "react-router-dom"
+import { FaSquareTwitter, FaInstagram } from "react-icons/fa6";
 
 export const MyProfile = () => {
   const {store, actions} = useContext(Context)
@@ -71,14 +72,14 @@ export const MyProfile = () => {
                 </div>
                 <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
                   <span>
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <FaSquareTwitter/>
                   </span>
                   <span>
-                  <i class="fa-brands fa-instagram"></i>
+                    <FaInstagram/>
                   </span>
                 </div>
                 <Link to={"/updateprofile"}>
-                <button>Edit Profile</button>
+                <button className="update-profile-btn">Edit Profile</button>
                 </Link>
               </div>
             </div>
