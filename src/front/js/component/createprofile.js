@@ -36,6 +36,8 @@ export const UpdateProfile = () => {
           <label htmlFor="name">Favorite Book</label>
           <input type="text" id="name" name="favorite_book" required />
         </div>
+        <div>
+        <label htmlFor="name">Favorite Genres</label>
         <select name="favorite_genres">
           <option value="romance">
             Romance
@@ -56,6 +58,7 @@ export const UpdateProfile = () => {
             Self-Development
           </option>
         </select>
+        </div>
         <div>
           <label htmlFor="name">Number Books I Read</label>
           <input type="text" id="name" name="number_books_read"/>
