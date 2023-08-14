@@ -14,11 +14,8 @@ import { BookDiscussions } from "./component/bookdiscussions";
 import { MyProfile } from "./component/myprofile";
 import { SignIn } from "./component/signin";
 import { CreateAccount } from "./component/createaccount";
-<<<<<<< HEAD
 import { CreateProfile } from "./component/createprofile";
-=======
 import { DiscussionFull } from "./component/discussionfull";
->>>>>>> b0fc472 (Cat is awesome)
 
 //create your first component
 const Layout = () => {

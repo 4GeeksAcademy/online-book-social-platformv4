@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React, { useContext } from "react";
-=======
 import React, {useContext, useEffect} from "react";
 
 import { useNavigate } from "react-router-dom";
->>>>>>> 383fe4d (cats updates)
 import "../../styles/signin.css";
 import { Context } from "../store/appContext";
 

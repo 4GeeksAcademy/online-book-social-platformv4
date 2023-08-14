@@ -2,8 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
-			backurl: "https://crob001-humble-space-guide-r99xj9459vgc649-3001.preview.app.github.dev",
-			fronturl: "https://crob001-humble-space-guide-r99xj9459vgc649-3000.preview.app.github.dev",
+			backurl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3001.app.github.dev",
+			fronturl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3000.app.github.dev",
 			discussions: []
 		},
 		actions: {
