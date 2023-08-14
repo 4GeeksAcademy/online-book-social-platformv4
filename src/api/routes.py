@@ -158,18 +158,17 @@ def getOneDiscussions(id):
 @api.route('/discussions', methods=['POST'])
 @jwt_required()
 def createDiscussion():
-    user_id = get_jwt_identity()
-    #user_id = 1
-    body = request.get_json()
-    print(body["title"])
-    new_disc = Discussion (
-        user_id=user_id,
-        title=body["title"],
-        discussion=body["discussion"]
-    )
-    db.session.add(new_disc)
-    db.session.commit()
-    return jsonify(new_disc.serialize()), 200
+  user_id = get_jwt_identity()
+  body = request.get_json()
+  new_discussion = Discussions(
+    user_id=user_id, 
+    discussion=body["discussion"], 
+    title = body["title"]
+  )
+  db.session.add(new_discussion)
+  db.session.commit()
+  return jsonify(new_discussion.serialize())
+
 # CREATE COMMENT
 @api.route('/comment', methods=['POST'])
 # @jwt_required()
