@@ -29,29 +29,33 @@ export const UpdateProfile = () => {
 
     
   return (
+
+   
+  <body>
     <div>
-      <h3>Create Profile</h3>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Favorite Book</label>
-          <input type="text" id="name" name="favorite_book" required />
+    <section class="container">
+      <header>Update Profile</header>
+      <form action="#" class="form" onSubmit={handleSubmit}>
+      <div class="input-box">
+           <label htmlFor="name">Favorite Book</label>
+           <input type="text" id="name" name="favorite_book" required />
         </div>
-        <div>
+        <div class="input-box">
         <label htmlFor="name">Favorite Genres</label>
-        <select name="favorite_genres">
+         <select name="favorite_genres">
           <option value="romance">
-            Romance
-          </option>
+             Romance
+           </option>
           <option value="comedy">
-            Comedy
-          </option>
+             Comedy
+           </option>
           <option value="fiction">
-            Fiction
-          </option>
+             Fiction
+           </option>
           <option value="fiction">
             Non-Fiction
           </option>
-          <option value="fiction">
+           <option value="fiction">
             Biography
           </option>
           <option value="fiction">
@@ -59,22 +63,70 @@ export const UpdateProfile = () => {
           </option>
         </select>
         </div>
-        <div>
+        <div className="input-box">
           <label htmlFor="name">Number Books I Read</label>
-          <input type="text" id="name" name="number_books_read"/>
-        </div>
-        <div>
-          <label htmlFor="name">Favorite Author:</label>
-          <input type="text" id="name" name="favorite_author" required />
-        </div>
-        <div>
+           <input type="text" id="name" name="number_books_read"/>
+         </div>
+          <div className="input-box">
+           <label htmlFor="name">Favorite Author:</label>
+           <input type="text" id="name" name="favorite_author" required />
+         </div>
+         <div className="input-box">
           <label htmlFor="name">Favorite Quote from a book:</label>
           <input type="text" id="quote" name="favorite_quote" required />
         </div>
-  
         <button type="submit">Create Profile</button>
       </form>
-      
+    </section>
     </div>
+  </body>
+
+    // <div>
+    //   <h3>Edit Profile</h3>
+    //   <form onSubmit={handleSubmit}>
+    //     <div>
+    //       <label htmlFor="name">Favorite Book</label>
+    //       <input type="text" id="name" name="favorite_book" required />
+    //     </div>
+    //     <div>
+    //     <label htmlFor="name">Favorite Genres</label>
+    //     <select name="favorite_genres">
+    //       <option value="romance">
+    //         Romance
+    //       </option>
+    //       <option value="comedy">
+    //         Comedy
+    //       </option>
+    //       <option value="fiction">
+    //         Fiction
+    //       </option>
+    //       <option value="fiction">
+    //         Non-Fiction
+    //       </option>
+    //       <option value="fiction">
+    //         Biography
+    //       </option>
+    //       <option value="fiction">
+    //         Self-Development
+    //       </option>
+    //     </select>
+    //     </div>
+    //     <div>
+    //       <label htmlFor="name">Number Books I Read</label>
+    //       <input type="text" id="name" name="number_books_read"/>
+    //     </div>
+    //     <div>
+    //       <label htmlFor="name">Favorite Author:</label>
+    //       <input type="text" id="name" name="favorite_author" required />
+    //     </div>
+    //     <div>
+    //       <label htmlFor="name">Favorite Quote from a book:</label>
+    //       <input type="text" id="quote" name="favorite_quote" required />
+    //     </div>
+  
+    //     <button type="submit">Create Profile</button>
+    //   </form>
+      
+    // </div>
   );
 };

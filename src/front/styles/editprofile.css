@@ -1,22 +1,10 @@
-
-
-/* label {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-span {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-h3 {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-} */
-
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "Poppins", sans-serif;
 }
 body {
   min-height: 100vh;
@@ -24,13 +12,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background:#796d62;
+  background: rgb(130, 106, 251);
 }
 .container {
   position: relative;
   max-width: 700px;
   width: 100%;
-  background: #796d62;
+  background: #fff;
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -74,13 +62,6 @@ body {
   margin-top: 20px;
 }
 
-.form .gender {
-  column-gap: 5px;
-}
-
-.address :where(input, .select-box) {
-  margin-top: 15px;
-}
 .select-box select {
   height: 100%;
   width: 100%;
@@ -99,17 +80,12 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #3f4c69 ;
+  background: rgb(130, 106, 251);
 }
 .form button:hover {
-  background: #444444;
+  background: rgb(88, 56, 250);
 }
-/*Responsive*/
-@media screen and (max-width: 500px) {
-  .form .column {
-    flex-wrap: wrap;
-  }
-  .form :where(.gender-option, .gender) {
+
+.form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
-}
