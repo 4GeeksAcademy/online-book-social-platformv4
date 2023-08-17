@@ -5,6 +5,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			backurl: process.env.BACKEND_URL,
 			profile: [],
 			currentUser: null
+			// backurl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3001.app.github.dev",
+			fronturl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3000.app.github.dev",
+			discussions: []
 		},
 		actions: {
 			login: async (email, password) => {
@@ -139,7 +142,81 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			}, 
+			syncSessionToStore: () => {
+                let ssToken = sessionStorage.getItem('token')
+                setStore({ token:ssToken })
+            },
+            getAllDiscussions: () => {
+                let backurl = getStore().backurl
+                fetch(backurl + "/api/discussions")
+                .then((res) => res.json())
+                .then((data) => {
+                    setStore({ discussions: data });
+                })
+                .catch((error) => {
+                    console.error("GET ALL DISCUSSIONS flux",error);
+                });
+            },
+
+			createAccount: async (name, email, password, profession, bio, twitter, ig) => {
+				let backurl=getStore().backurl
+				let fronturl=getStore().fronturl
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				  },
+				  body: JSON.stringify({
+					name: name,
+					email: email,
+					password: password,
+					profession: profession, 
+					bio: bio,
+					twitter: twitter, 
+					ig: ig
+				  }),
+				};
+				try {
+				  const res = await fetch(backurl + "/api/createAccount", opts);
+				 
+				  const data = await res.json();
+					if(data.status==="true"){
+						window.location.href= fronturl 
+					}
+				  return true;
+				} catch (error) {console.error(error);}
+			  },
+			  login: async (email, password) => {
+				const backurl = getStore().backurl
+				const fronturl=getStore().fronturl
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				  },
+				  body: JSON.stringify({
+					email: email,
+					password: password,
+				  }),
+				};
+				try {
+				  const res = await fetch(backurl + "/api/login", opts);
+				  const data = await res.json();
+				  sessionStorage.setItem("token", data.access_token);
+				  setStore({ token: data.access_token });
+				  if(data.status==="true"){
+					window.location.href= fronturl + "/profile"
+				}
+					syncSessionToStore()
+				  return true;
+				} catch (error) {console.error(error)}
+			  },
+
 		}
 	};
 };

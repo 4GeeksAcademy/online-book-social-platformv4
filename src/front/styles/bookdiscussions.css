@@ -25,3 +25,17 @@
     margin-right: 100px;
     margin-top: 10px;
 }
+
+.discussioncontainer {
+    display: flex; 
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.discussion-card {
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 0.356rem;
+    text-align: center;
+}
+

@@ -1,4 +1,6 @@
 import React, { useContext, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import "../../styles/signin.css";
 import { Context } from "../store/appContext";
 import { useNavigate} from "react-router-dom"
@@ -18,19 +20,18 @@ export const SignIn = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     actions.login(email, password)
-    
-    console.log("Email:", email);
-    console.log("Password:", password);
   };
-
+useEffect(() => {
+  if (store.token != "" && store.token != undefined) useNavigate("/")
+}, [store.token, useNavigate()]) 
   return (
     <div className="signin-container">
       <div className="signin-form">
         <h3>Sign In</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="email" name="email" required />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" required />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>

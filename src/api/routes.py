@@ -2,7 +2,8 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Users, Profile
+from api.models import Profile
+from api.models import db, Users, Discussion, Comment
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import create_access_token
@@ -40,6 +41,12 @@ def create_token():
 
 @api.route('/createUser', methods=['POST'])
 def createUser():
+      access_token = create_access_token(identity= user.id, expires_delta= expiration)
+      return jsonify({"access_token": access_token, "status" : "true"})
+      return jsonify(msg="wrong user")
+# create user -----------------------------------------------------------------------------------------------------------
+@api.route('/createAccount', methods=['POST'])
+def createAccount():
   if request.method == 'POST':
     request_body = request.get_json()
     if not request_body["name"]:
@@ -52,13 +59,13 @@ def createUser():
     if user:
       return jsonify({"msg": "User already exists"}), 400
     user = Users(
-          name=request_body["name"],
-          email=request_body["email"],
-          password=generate_password_hash(request_body["password"]),
-          profession=request_body["profession"],
-          bio=request_body["bio"],
-          twitter_username=request_body["twitter_username"],
-          ig_username=request_body["ig_username"]
+          name = request_body["name"],
+          email = request_body["email"],
+          password = generate_password_hash(request_body["password"]),
+          profession = request_body["profession"], 
+          bio = request_body["bio"], 
+          twitter_username = request_body["twitter"], 
+          ig_username = request_body["ig"]
       )
     db.session.add(user)
     db.session.commit()
@@ -135,3 +142,48 @@ def updateProfile():
    db.session.commit()
 
    return jsonify(profile.serialize())
+
+# GET ALL DISCUSSIONS
+@api.route('/discussions', methods=['GET'])
+def getAllDiscussions():
+    discussions = Discussion.query.all()
+    discussions_dic = [discussion.serialize() for discussion in discussions]
+    return jsonify(discussions_dic), 200
+# GET ONE DISCUSSION
+@api.route('/discussions/<int:id>', methods=['GET'])
+def getOneDiscussions(id):
+    discussion = Discussion.query.get(id)
+    return jsonify(discussion.serialize())
+# CREATE DISCUSSION
+@api.route('/discussions', methods=['POST'])
+@jwt_required()
+def createDiscussion():
+  user_id = get_jwt_identity()
+  body = request.get_json()
+  new_discussion = Discussions(
+    user_id=user_id, 
+    discussion=body["discussion"], 
+    title = body["title"]
+  )
+  db.session.add(new_discussion)
+  db.session.commit()
+  return jsonify(new_discussion.serialize())
+
+# CREATE COMMENT
+@api.route('/comment', methods=['POST'])
+# @jwt_required()
+def createComment():
+    # user_id = get_jwt_identity()
+    user_id = 1
+    data = request.json
+    body = request.get_json()
+    new_comment = Comment (
+        user_id=user_id,
+        discussion_id=body["discussion_id"],
+        comment=body["comment"],
+        parent_id=data.get("parent_id") or None
+    )
+    db.session.add(new_comment)
+    db.session.commit()
+    discussion = Discussion.query.get(body["discussion_id"])
+    return jsonify(discussion.serialize()), 200

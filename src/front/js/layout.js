@@ -15,6 +15,7 @@ import { MyProfile } from "./component/myprofile";
 import { SignIn } from "./component/signin";
 import { CreateAccount } from "./component/createaccount";
 import { UpdateProfile } from "./component/createprofile";
+import { DiscussionFull } from "./component/discussionfull";
 
 //create your first component
 const Layout = () => {
@@ -36,6 +37,7 @@ const Layout = () => {
             <Route path="/createaccount" element={<CreateAccount />} />
             <Route path="/updateprofile" element={<UpdateProfile />} />
             <Route path="*" element={<h1>Not found!</h1>} />
+            <Route path="/discussion/:id" element={<DiscussionFull/>} />
           </Routes>
           <Footer />
         </ScrollToTop>

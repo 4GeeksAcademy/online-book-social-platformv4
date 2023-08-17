@@ -1,0 +1,30 @@
+.discussion-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.comment-section {
+    width: 100%;
+}
+
+.discussion-comment {
+    width: 100%;
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+}
+.discussion-sub-comment {
+    border-top: 1px solid black;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
