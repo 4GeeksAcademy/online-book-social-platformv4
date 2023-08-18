@@ -4,7 +4,6 @@ import "../../styles/signin.css";
 import { Context } from "../store/appContext";
 
 
-
 export const SignIn = () => {
   const {store, actions} = useContext(Context)
   let navigate= useNavigate()

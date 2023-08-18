@@ -34,33 +34,33 @@ export const CreateAccount = () => {
     <section class="container">
       <header>Create Account</header>
       <form action="#" class="form" onSubmit={handleSubmit}>
-        <div class="input-box">
+        <div className="input-box">
           <label htmlFor="name">Name</label>
           <input type="text" placeholder="Enter full name" required />
         </div>
-        <div class="input-box">
+        <div className="input-box">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" name="username" required />
         </div>
-        <div class="column">
-          <div class="input-box">
+        <div className="column">
+          <div className="input-box">
             <label htmlFor="email">Email Address</label>
             <input type="email" id="email" name="email" required />
           </div>
-          <div class="input-box">
+          <div className="input-box">
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" required />
           </div>
         </div>
-        <div class="input-box">
+        <div className="input-box">
            <label htmlFor="profession">Profession:</label>
           <input type="text" id="profession" name="profession" />
         </div>
-        <div class="input-box">
+        <div className="input-box">
            <label htmlFor="bio">Bio:</label>
            <input type="text" id="bio" name="bio" />
          </div>
-         <div class="input-box">
+         <div className="input-box">
          <label htmlFor="name">Favorite Genres</label>
          <select name="favorite_genres">
            <option value="romance">
@@ -83,36 +83,28 @@ export const CreateAccount = () => {
           </option>
          </select>
         </div>
-        <div class="input-box">
+        <div className="input-box">
            <label htmlFor="name">Number Books I Read</label>
            <input type="text" id="name" name="number_books_read"/>
          </div>
-         <div class="input-box">
+         <div className="input-box">
           <label htmlFor="name">Favorite Author:</label>
          <input type="text" id="name" name="favorite_author" required />
         </div>
-        <div class="input-box">
+        <div className="input-box">
           <label htmlFor="name">Favorite Quote from a book:</label>
           <input type="text" id="quote" name="favorite_quote" required />
         </div>
-        <div class="input-box">
+        <div className="input-box">
            <label htmlFor="twitter_username">Twitter Username:</label>
            <input type="text" id="twitter_username" name="twitter_username" />
          </div> 
-         <div class="input-box">
+         <div className="input-box">
            <label htmlFor="ig_username">Instagram Username:</label>
            <input
             type="text" id="ig_username" name="ig_username"
-            class="form-control"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
           />
           </div>
-        <div>
-          <label htmlFor="ig_username">IG Username:</label>
-          <input type="text" id="ig_username" name="ig" />
-        </div>
         <button type="submit">Create Account</button>
       </form>
     </section>

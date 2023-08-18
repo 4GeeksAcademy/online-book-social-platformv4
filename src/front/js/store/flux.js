@@ -2,9 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
-			backurl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3001.app.github.dev",
-			fronturl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3000.app.github.dev",
-			discussions: []
+			backurl: process.env.BACKEND_URL,
+			fronturl: "https://techprenuer1-studious-carnival-9vrpvq5q4ppc77xv-3001.app.github.dev/",
+			discussions: [],
+			profile: []
 		},
 		actions: {
 			login: async (email, password) => {
