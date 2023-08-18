@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import "../../styles/createcommentmodal.css"
 const CreateCommentModal = (props) => {
@@ -68,6 +69,6 @@ const CreateCommentModal = (props) => {
           </div>
         </div>
     </>
-  )
-}
+  );
+};
 export default CreateCommentModal

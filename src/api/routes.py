@@ -160,7 +160,7 @@ def getOneDiscussions(id):
 def createDiscussion():
   user_id = get_jwt_identity()
   body = request.get_json()
-  new_discussion = Discussions(
+  new_discussion = Discussion(
     user_id=user_id, 
     discussion=body["discussion"], 
     title = body["title"]

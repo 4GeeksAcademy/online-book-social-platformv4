@@ -1,11 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			token: null, 
-			backurl: process.env.BACKEND_URL,
-			profile: [],
-			currentUser: null
-			// backurl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3001.app.github.dev",
+			token: null,
+			backurl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3001.app.github.dev",
 			fronturl: "https://crob001-literate-umbrella-g99pg94vp4vcwqv6-3000.app.github.dev",
 			discussions: []
 		},

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Modal from '../component/modal';
-import { Context } from '../store/appContext';
+import { Context} from '../store/appContext';
 import CreateDiscussionModal from "../component/creatediscussionmodal"
 import { Link } from 'react-router-dom';
 import "../../styles/bookdiscussions.css"
