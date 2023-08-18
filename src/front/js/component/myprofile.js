@@ -31,6 +31,7 @@ export const MyProfile = () => {
   }
 
   useEffect(()=>{
+    actions.syncSessionToStore()
     getProfile();
   },[]);
   

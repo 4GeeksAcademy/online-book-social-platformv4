@@ -39,11 +39,11 @@ def create_token():
 # create user -----------------------------------------------------------------------------------------------------------
 
 
-@api.route('/createUser', methods=['POST'])
-def createUser():
-      access_token = create_access_token(identity= user.id, expires_delta= expiration)
-      return jsonify({"access_token": access_token, "status" : "true"})
-      return jsonify(msg="wrong user")
+# @api.route('/createUser', methods=['POST'])
+# def createUser():
+#       access_token = create_access_token(identity= user.id, expires_delta= expiration)
+#       return jsonify({"access_token": access_token, "status" : "true"})
+#       return jsonify(msg="wrong user")
 # create user -----------------------------------------------------------------------------------------------------------
 @api.route('/createAccount', methods=['POST'])
 def createAccount():
@@ -68,6 +68,25 @@ def createAccount():
           ig_username = request_body["ig"]
       )
     db.session.add(user)
+    db.session.commit()
+
+    print(user.id)
+    favorite_book=request_body.get("favorite_book")
+    favorite_genres=request_body.get("favorite_genres")
+    favorite_author=request_body.get("favorite_author")
+    number_books_read=request_body.get("number_books_read")
+    favorite_quotes=request_body.get("favorite_quote")
+    user_id=request_body.get("user_id")
+    
+    new_profile = Profile(
+        favorite_book = favorite_book,
+        favorite_genres = favorite_genres,
+        favorite_author = favorite_author,
+        number_books_read = number_books_read,
+        favorite_quotes = favorite_quotes,
+        user_id = user.id
+    )
+    db.session.add(new_profile)
     db.session.commit()
     return jsonify({"created": "Thanks. Your registration was successfully", "status": "true"}), 200
 

@@ -21,7 +21,7 @@ export const SignIn = () => {
   };
 useEffect(() => {
   if (store.token != "" && store.token != undefined) useNavigate("/")
-}, [store.token, useNavigate()]) 
+}, [store.token]) 
   return (
     <div className="signin-container">
       <div className="signin-form">

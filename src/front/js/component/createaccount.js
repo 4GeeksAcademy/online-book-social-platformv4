@@ -5,8 +5,9 @@ export const CreateAccount = () => {
   const {store, actions} = useContext(Context)
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(event)
 
-    const name = event.target.name.value;
+    const name = event.target.full_name.value;
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -14,15 +15,15 @@ export const CreateAccount = () => {
     const bio = event.target.bio.value;
     const twitter_username = event.target.twitter_username.value;
     const ig_username = event.target.ig_username.value;
-    const favorite_book = event.target.favorite_book.value;
     const favorite_genres = event.target.favorite_genres.value;
     const favorite_author = event.target.favorite_author.value;
     const favorite_quote = event.target.favorite_quote.value;
     const number_books_read = event.target.number_books_read.value;
+    const favorite_book = event.target.favorite_book.value;
 
-    actions.createUser(name, email, password, profession, bio, twitter_username, ig_username, favorite_book, favorite_genres, favorite_author, favorite_quote, number_books_read)
+    actions.createUser(name, email, password, profession, bio, twitter_username, ig_username, favorite_genres, favorite_author, favorite_quote, number_books_read, favorite_book)
 
-
+ 
 
     console.log("Username:", username);
     console.log("Email:", email);
@@ -36,7 +37,7 @@ export const CreateAccount = () => {
       <form action="#" class="form" onSubmit={handleSubmit}>
         <div className="input-box">
           <label htmlFor="name">Name</label>
-          <input type="text" placeholder="Enter full name" required />
+          <input type="text" name="full_name" placeholder="Enter full name" required />
         </div>
         <div className="input-box">
           <label htmlFor="username">Username</label>
@@ -60,6 +61,10 @@ export const CreateAccount = () => {
            <label htmlFor="bio">Bio:</label>
            <input type="text" id="bio" name="bio" />
          </div>
+         <div className="input-box">
+          <label htmlFor="name">Favorite Book:</label>
+         <input type="text" id="name" name="favorite_book" />
+        </div>
          <div className="input-box">
          <label htmlFor="name">Favorite Genres</label>
          <select name="favorite_genres">
@@ -89,11 +94,11 @@ export const CreateAccount = () => {
          </div>
          <div className="input-box">
           <label htmlFor="name">Favorite Author:</label>
-         <input type="text" id="name" name="favorite_author" required />
+         <input type="text" id="name" name="favorite_author" />
         </div>
         <div className="input-box">
           <label htmlFor="name">Favorite Quote from a book:</label>
-          <input type="text" id="quote" name="favorite_quote" required />
+          <input type="text" id="quote" name="favorite_quote" />
         </div>
         <div className="input-box">
            <label htmlFor="twitter_username">Twitter Username:</label>

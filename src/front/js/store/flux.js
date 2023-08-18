@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			backurl: process.env.BACKEND_URL,
 			fronturl: "https://techprenuer1-studious-carnival-9vrpvq5q4ppc77xv-3001.app.github.dev/",
 			discussions: [],
-			profile: []
+			profile: [],
+			currentUser: null
 		},
 		actions: {
 			login: async (email, password) => {
@@ -32,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  return true;
 				} catch (error) {console.error(error)}
 			  },
-			  createUser: async (name, email, password, profession, bio, twitter_username, ig_username  ) => {
+			  createUser: async (name, email, password, profession, bio, twitter_username, ig_username, favorite_genres, favorite_author, favorite_quote, number_books_read, favorite_book  ) => {
 				const backurl = getStore().backurl
 				
 				const opts = {
@@ -48,13 +49,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: password,
 					profession: profession,
 					bio: bio,
-					twitter_username: twitter_username, 
-					ig_username: ig_username
+					twitter: twitter_username, 
+					ig: ig_username,
+					favorite_genres: favorite_genres,
+					favorite_author: favorite_author,
+					favorite_quote: favorite_quote,
+					number_books_read: number_books_read,
+					favorite_book: favorite_book
+
+
 
 				  }),
 				};
 				try {
-				  const res = await fetch(backurl + "/api/createUser", opts);
+				  const res = await fetch(backurl + "/api/createAccount", opts);
 				 
 				  const data = await res.json();
 				  console.log(data)
